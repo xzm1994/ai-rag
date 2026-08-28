@@ -40,14 +40,14 @@ public class DocumentController {
 
     @DeleteMapping("/{id}")
     @Operation(summary = "删除文档")
-    public Result<Void> delete(@PathVariable Long id) {
+    public Result<String> delete(@PathVariable Long id) {
         documentService.deleteDocument(id);
         return Result.success("删除成功");
     }
 
     @PutMapping("/{id}/status")
     @Operation(summary = "更新文档状态")
-    public Result<Void> updateStatus(@PathVariable Long id, @RequestParam Integer status) {
+    public Result<String> updateStatus(@PathVariable Long id, @RequestParam Integer status) {
         documentService.updateDocumentStatus(id, status);
         return Result.success("状态更新成功");
     }

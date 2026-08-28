@@ -5,7 +5,6 @@ import com.enterprise.rag.repository.DocumentMapper;
 import com.enterprise.rag.service.api.FileParseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tika.Tika;
 import org.springframework.stereotype.Service;
 
 import java.io.File;

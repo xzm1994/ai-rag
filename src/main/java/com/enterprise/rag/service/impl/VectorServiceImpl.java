@@ -8,7 +8,9 @@ import com.enterprise.rag.service.api.VectorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.document.Document;
+import org.springframework.ai.embedding.Embedding;
 import org.springframework.ai.embedding.EmbeddingClient;
+import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Service;
@@ -27,7 +29,7 @@ public class VectorServiceImpl implements VectorService {
 
     private final DocumentChunkMapper chunkMapper;
     private final VectorStore vectorStore;
-    private final EmbeddingClient embeddingClient;
+    private final EmbeddingModel embeddingClient;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -35,7 +37,7 @@ public class VectorServiceImpl implements VectorService {
         try {
             for (DocumentChunk chunk : chunks) {
                 try {
-                    List<Float> embedding = embeddingClient.embed(chunk.getContent());
+                    List<Double> embedding = embeddingClient.embed(chunk.getContent());
 
                     org.springframework.ai.document.Document doc = Document.builder()
                             .withContent(chunk.getContent())

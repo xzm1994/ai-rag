@@ -3,6 +3,7 @@ package com.enterprise.rag.dto.response;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 对话历史VO

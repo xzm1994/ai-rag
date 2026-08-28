@@ -1,11 +1,15 @@
 package com.enterprise.rag.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.enterprise.rag.dto.response.CategoryVO;
 import com.enterprise.rag.repository.DocumentMapper;
 import com.enterprise.rag.service.api.KnowledgeBaseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 知识库服务实现类

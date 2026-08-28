@@ -94,7 +94,7 @@ public class ChatServiceImpl implements ChatService {
     private String buildPrompt(String context, String question) {
         return String.format(
                 "你是一个企业知识库助手，请基于以下知识库内容回答问题。\n" +
-                "如果知识库中没有相关信息，请如实回答"知识库中无相关信息"。\n" +
+                "如果知识库中没有相关信息，请如实回答'知识库中无相关信息。\n" +
                 "【知识库内容】\n%s\n\n" +
                 "【问题】\n%s\n\n" +
                 "【回答】",

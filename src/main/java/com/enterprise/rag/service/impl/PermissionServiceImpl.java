@@ -1,6 +1,7 @@
 package com.enterprise.rag.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.enterprise.rag.domain.Permission;
 import com.enterprise.rag.repository.PermissionMapper;
 import com.enterprise.rag.service.api.PermissionService;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,7 @@ public class PermissionServiceImpl implements PermissionService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void deleteByDocumentId(Long documentId) {
-        permissionMapper.delete(new LambdaQueryWrapper<>().eq(Permission::getDocumentId, documentId));
+        permissionMapper.delete(new LambdaQueryWrapper<Permission>().eq(Permission::getDocumentId, documentId));
     }
 
     @Override

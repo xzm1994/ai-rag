@@ -1,6 +1,7 @@
 package com.enterprise.rag.controller;
 
 import com.enterprise.rag.dto.request.DocumentUploadRequest;
+import com.enterprise.rag.service.api.DocumentService;
 import com.enterprise.rag.util.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

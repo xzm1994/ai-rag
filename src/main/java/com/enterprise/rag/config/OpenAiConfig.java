@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.openai.OpenAiEmbeddingModel;
 import org.springframework.ai.openai.api.OpenAiApi;
-import org.springframework.ai.embedding.EmbeddingClient;
 import org.springframework.ai.chat.model.ChatModel;
 
 /**
@@ -31,7 +30,7 @@ public class OpenAiConfig {
     }
 
     @Bean
-    public EmbeddingClient embeddingClient() {
+    public OpenAiEmbeddingModel embeddingClient() {
         return openAiEmbeddingModel;
     }
 }

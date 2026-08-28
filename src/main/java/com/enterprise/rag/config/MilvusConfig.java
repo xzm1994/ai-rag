@@ -1,6 +1,7 @@
 package com.enterprise.rag.config;
 
-import org.springframework.ai.embedding.EmbeddingClient;
+import io.milvus.common.clientenum.ConsistencyLevelEnum;
+import io.milvus.grpc.DataType;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,7 @@ import io.milvus.param.collection.FieldType;
 import io.milvus.param.dml.InsertParam;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Milvus 向量数据库配置类
@@ -37,8 +39,7 @@ public class MilvusConfig {
         ConnectParam connectParam = ConnectParam.newBuilder()
                 .withHost(ragProperties.getMilvus().getHost())
                 .withPort(ragProperties.getMilvus().getPort())
-                .withConnectTimeoutMs(10000L)
-                .withConnectionUsageTimeoutMs(30000L)
+                .withConnectTimeout(10000L, TimeUnit.MILLISECONDS)
                 .build();
 
         MilvusServiceClient milvusClient = new MilvusServiceClient(connectParam);
@@ -82,7 +83,7 @@ public class MilvusConfig {
         CreateCollectionParam createCollectionReq = CreateCollectionParam.newBuilder()
                 .withCollectionName(collectionName)
                 .withFieldTypes(List.of(fieldType1, fieldType2, fieldType3))
-                .withConsistencyLevel(ConsistencyLevelEnum.Bounded)
+                .withConsistencyLevel(ConsistencyLevelEnum.BOUNDED)
                 .build();
 
         try {

@@ -2,6 +2,7 @@ package com.enterprise.rag.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * RAG 系统自定义配置
@@ -9,6 +10,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author Enterprise RAG Team
  */
 @Data
+@Configuration
 @ConfigurationProperties(prefix = "enterprise.rag")
 public class RagProperties {
 

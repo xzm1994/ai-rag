@@ -35,14 +35,14 @@ public class CategoryController {
 
     @PutMapping
     @Operation(summary = "更新分类")
-    public Result<Void> update(@RequestBody CategoryVO category) {
+    public Result<String> update(@RequestBody CategoryVO category) {
         knowledgeBaseService.updateCategory(category);
         return Result.success("分类更新成功");
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "删除分类")
-    public Result<Void> delete(@PathVariable Long id) {
+    public Result<String> delete(@PathVariable Long id) {
         knowledgeBaseService.deleteCategory(id);
         return Result.success("分类删除成功");
     }
