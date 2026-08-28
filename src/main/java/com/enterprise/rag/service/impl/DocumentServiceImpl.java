@@ -132,7 +132,7 @@ public class DocumentServiceImpl implements DocumentService {
                 chunk.setEmbeddingStatus(0);
                 chunkEntities.add(chunk);
             }
-            chunkMapper.insertBatch(chunkEntities);
+            chunkMapper.insert(chunkEntities);
 
             Document document = documentMapper.selectById(documentId);
             document.setChunkCount(chunkEntities.size());
@@ -159,8 +159,8 @@ public class DocumentServiceImpl implements DocumentService {
         LambdaQueryWrapper<Document> wrapper = new LambdaQueryWrapper<>();
         Long currentUserId = SecurityUtil.getCurrentUserId();
         wrapper.and(w -> w.eq(Document::getViewPermission, 0)
-                .or(w.eq(Document::getUploadUserId, currentUserId))
-                .or(w.eq(Document::getDeptId, getCurrentUserDeptId())));
+                .or().eq(Document::getUploadUserId, currentUserId))
+                .or().eq(Document::getDeptId, getCurrentUserDeptId());
 
         if (categoryId != null) {
             wrapper.eq(Document::getCategoryId, categoryId);
@@ -173,11 +173,15 @@ public class DocumentServiceImpl implements DocumentService {
         Page<Document> page = new Page<>(pageNum, pageSize);
         Page<Document> documentPage = documentMapper.selectPage(page, wrapper);
 
-        return documentPage.convert(d -> {
+        Page<DocumentVO> result = new Page<>(documentPage.getCurrent(), documentPage.getSize(), documentPage.getTotal());
+        List<DocumentVO> list = documentPage.getRecords().stream().map(d -> {
             DocumentVO vo = new DocumentVO();
             BeanUtils.copyProperties(d, vo);
             return vo;
-        });
+        }).toList();
+        result.setRecords(list);
+
+        return result;
     }
 
     @Override

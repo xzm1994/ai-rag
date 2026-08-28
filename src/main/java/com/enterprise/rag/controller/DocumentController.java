@@ -1,5 +1,6 @@
 package com.enterprise.rag.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.enterprise.rag.dto.request.DocumentUploadRequest;
 import com.enterprise.rag.dto.response.DocumentVO;
 import com.enterprise.rag.service.api.DocumentService;
@@ -25,10 +26,10 @@ public class DocumentController {
 
     @GetMapping("/list")
     @Operation(summary = "文档列表")
-    public Result<List<DocumentVO>> list(@RequestParam(required = false) Long categoryId,
-                                          @RequestParam(required = false) Integer status,
-                                          @RequestParam(defaultValue = "10") int pageSize,
-                                          @RequestParam(defaultValue = "1") int pageNum) {
+    public Result<Page<DocumentVO>> list(@RequestParam(required = false) Long categoryId,
+                                         @RequestParam(required = false) Integer status,
+                                         @RequestParam(defaultValue = "10") int pageSize,
+                                         @RequestParam(defaultValue = "1") int pageNum) {
         return Result.success(documentService.getDocumentList(categoryId, status, pageSize, pageNum));
     }
 

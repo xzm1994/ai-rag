@@ -15,8 +15,8 @@ import org.springframework.ai.chat.model.ChatModel;
 @Configuration
 public class OpenAiConfig {
 
-    private final org.springframework.ai.openai.OpenAiChatModel openAiChatModel;
-    private final org.springframework.ai.openai.OpenAiEmbeddingModel openAiEmbeddingModel;
+    private final OpenAiChatModel openAiChatModel;
+    private final OpenAiEmbeddingModel openAiEmbeddingModel;
 
     public OpenAiConfig() {
         // Spring AI 会自动配置这些 Bean
