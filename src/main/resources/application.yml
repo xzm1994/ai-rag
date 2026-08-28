@@ -2,7 +2,7 @@ spring:
   application:
     name: enterprise-rag
   profiles:
-    active: @spring.profiles.active@
+    active: dev
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -21,15 +21,15 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/enterprise_rag?useUnicode=true&characterEncoding=utf8mb4&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
-    password: root1234
+    password: root
   ai:
     openai:
       base-url: https://api.deepseek.com/v1  # 或通义千问地址
-      api-key: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      api-key: sk-0479be630986491db7a70c8f0b28519c
       embedding:
         model: bge-large-zh-v1.5  # 中文向量模型
       chat:
-        model: deepseek-chat
+        model: deepseek-v4-flash
         temperature: 0.7
         max-tokens: 1000
   tika:
