@@ -1,0 +1,80 @@
+# .gitignore for Enterprise RAG System
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+logs/
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.settings/
+.project
+.classpath
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*~
+
+# IDE specific files
+.vscode/
+.idea/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Upload files (建议使用对象存储，本地上传文件不提交)
+D:/rag/uploads/
+upload/
+*.upload
+
+# Database files
+*.db
+*.sqlite
+
+# Test reports
+site/
+target/
+surefire-reports/
+failsafe-reports/
+
+# Data files
+*.csv
+*.xls
+*.xlsx
+
+# Backup files
+*.bak
+*.backup
